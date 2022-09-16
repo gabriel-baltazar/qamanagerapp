@@ -8,13 +8,13 @@
         <form action="{{ route('permissions.store') }}" method="post" class="form-horizontal">
           @csrf
           <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title">Permiso</h4>
-              <p class="card-category">Ingresar datos</p>
+            <div class="card-header card-header-info">
+              <h4 class="card-title">Permissão</h4>
+              <p class="card-category">Inserir dados</p>
             </div>
             <div class="card-body">
               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Nombre del permiso</label>
+                <label for="name" class="col-sm-2 col-form-label">Nome da permissão</label>
                 <div class="col-sm-7">
                   <div class="form-group">
                     <input type="text" class="form-control" name="name" autofocus>
@@ -24,7 +24,7 @@
             </div>
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn btn-info">Salvar</button>
             </div>
             <!--End footer-->
           </div>

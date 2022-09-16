@@ -6,7 +6,7 @@
       <div class="col-md-12">
         <div class="card">
           <!--Header-->
-          <div class="card-header card-header-primary">
+          <div class="card-header card-header-info">
             <h4 class="card-title">Posts</h4>
             <p class="card-category">Vista detallada de {{ $post->title }}</p>
           </div>

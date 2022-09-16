@@ -8,7 +8,7 @@
           @csrf
           @method('PUT')
           <div class="card">
-            <div class="card-header card-header-primary">
+            <div class="card-header card-header-info">
               <h4 class="card-title">Usuario</h4>
               <p class="card-category">Editar datos</p>
             </div>
