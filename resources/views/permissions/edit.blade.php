@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'permissions', 'titlePage' => 'Editar permiso'])
+@extends('layouts.main', ['activePage' => 'permissions', 'titlePage' => 'Editar permissão'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -8,13 +8,13 @@
           @csrf
           @method('PUT')
           <div class="card">
-            <div class="card-header card-header-primary">
-              <h4 class="card-title">Permiso</h4>
+            <div class="card-header card-header-info">
+              <h4 class="card-title">Permissão</h4>
               <p class="card-category">Editar datos</p>
             </div>
             <div class="card-body">
               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                <label for="name" class="col-sm-2 col-form-label">Nome da permissão</label>
                 <div class="col-sm-7">
                   <input type="text" class="form-control" name="name" value="{{ old('name', $permission->name) }}" autofocus>
                 </div>
@@ -22,7 +22,7 @@
             </div>
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Actualizar</button>
+              <button type="submit" class="btn btn-primary">Atualizar</button>
             </div>
             <!--End footer-->
           </div>

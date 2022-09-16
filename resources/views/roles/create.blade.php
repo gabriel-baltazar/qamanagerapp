@@ -9,7 +9,7 @@
           @csrf
           <div class="card ">
             <!--Header-->
-            <div class="card-header card-header-primary">
+            <div class="card-header card-header-info">
               <h4 class="card-title">Crear Rol</h4>
               <p class="card-category">Ingresar datos del rol</p>
             </div>

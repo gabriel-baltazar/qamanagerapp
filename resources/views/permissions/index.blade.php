@@ -8,26 +8,26 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card">
-                <div class="card-header card-header-primary">
-                  <h4 class="card-title">Permisos</h4>
-                  <p class="card-category">Permisos registrados</p>
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">Permissões</h4>
+                  <p class="card-category">Permissões registradas</p>
                 </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-12 text-right">
                     @can('permission_create')
-                      <a href="{{ route('permissions.create') }}" class="btn btn-sm btn-facebook">Añadir permiso</a>
+                      <a href="{{ route('permissions.create') }}" class="btn btn-sm btn-facebook">Nova Permissão</a>
                     @endcan
                     </div>
                   </div>
                   <div class="table-responsive">
                     <table class="table">
-                      <thead class="text-primary">
+                      <thead class="text-dark">
                         <th>ID</th>
-                        <th>Nombre</th>
+                        <th>Nome</th>
                         <th>Guard</th>
-                        <th>Created_at</th>
-                        <th class="text-right">Acciones</th>
+                        <th>Criado em</th>
+                        <th class="text-right">Ações</th>
                       </thead>
                       <tbody>
                         @forelse ($permissions as $permission)
@@ -59,7 +59,7 @@
                         </tr>
                         @empty
                         <tr>
-                          <td colspan="2">Sin registros.</td>
+                          <td colspan="2">Sem registros.</td>
                         </tr>
                         @endforelse
                       </tbody>
