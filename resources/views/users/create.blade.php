@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'users', 'titlePage' => 'Nuevo usuario'])
+@extends('layouts.main', ['activePage' => 'users', 'titlePage' => 'Novo usuário'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -8,8 +8,8 @@
           @csrf
           <div class="card">
             <div class="card-header card-header-info">
-              <h4 class="card-title">Usuario</h4>
-              <p class="card-category">Ingresar datos</p>
+              <h4 class="card-title">Usuário</h4>
+              <p class="card-category">Inserir dados</p>
             </div>
             <div class="card-body">
               {{-- @if ($errors->any())
@@ -22,43 +22,43 @@
                   </div>
               @endif --}}
               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                <label for="name" class="col-sm-2 col-form-label">Nome</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre" value="{{ old('name') }}" autofocus>
+                  <input type="text" class="form-control" name="name" placeholder="Informe o nome" value="{{ old('name') }}" autofocus>
                   @if ($errors->has('name'))
                     <span class="error text-danger" for="input-name">{{ $errors->first('name') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="username" class="col-sm-2 col-form-label">Nombre de usuario</label>
+                <label for="username" class="col-sm-2 col-form-label">Nome do usuário</label>
                 <div class="col-sm-7">
-                  <input type="text" class="form-control" name="username" placeholder="Ingrese su nombre de usuario" value="{{ old('username') }}">
+                  <input type="text" class="form-control" name="username" placeholder="Informe o nome de usuário" value="{{ old('username') }}">
                   @if ($errors->has('username'))
                     <span class="error text-danger" for="input-username">{{ $errors->first('username') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="email" class="col-sm-2 col-form-label">Correo</label>
+                <label for="email" class="col-sm-2 col-form-label">E-mail</label>
                 <div class="col-sm-7">
-                  <input type="email" class="form-control" name="email" placeholder="Ingrese su correo" value="{{ old('email') }}">
+                  <input type="email" class="form-control" name="email" placeholder="Informe o e-mail" value="{{ old('email') }}">
                   @if ($errors->has('email'))
                     <span class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+                <label for="password" class="col-sm-2 col-form-label">Senha</label>
                 <div class="col-sm-7">
-                  <input type="password" class="form-control" name="password" placeholder="Contraseña">
+                  <input type="password" class="form-control" name="password" placeholder="Senha">
                   @if ($errors->has('password'))
                     <span class="error text-danger" for="input-password">{{ $errors->first('password') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="roles" class="col-sm-2 col-form-label">Roles</label>
+                <label for="roles" class="col-sm-2 col-form-label">Funções</label>
                 <div class="col-sm-7">
                     <div class="form-group">
                         <div class="tab-content">
@@ -94,7 +94,7 @@
             </div>
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Guardar</button>
+              <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
             <!--End footer-->
           </div>

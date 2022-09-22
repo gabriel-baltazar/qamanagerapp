@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'roles', 'titlePage' => 'Detalhes da função'])
+@extends('layouts.main', ['activePage' => 'tasks', 'titlePage' => 'Detalhes tarefas'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -7,8 +7,8 @@
         <div class="card">
           <!--Header-->
           <div class="card-header card-header-info">
-            <h4 class="card-title">Funções</h4>
-            <p class="card-category">Destalhes</p>
+            <h4 class="card-title">Tarefa</h4>
+            <p class="card-category">Detalhes</p>
           </div>
           <!--End header-->
           <!--Body-->
@@ -24,23 +24,14 @@
                         <div class="block block-two"></div>
                         <div class="block block-three"></div>
                         <div class="block block-four"></div>
-                        <a href="#">
-                          <img class="avatar" src="{{ asset('/img/default-avatar.png') }}" alt="">
-                          <h5 class="title mt-3">Função: {{ $role->name }}</h5>
-                        </a>
+                        <h5 class="title mt-3">{{ $task->title }}</h5>
                         <p class="description">
-                          {{ $role->guard_name }} <br>
-                          {{ $role->created_at }}
+                        <b>Status:</b> {{ $task->_status() }} <br>
+                        <b>Criado em:</b> {{ $task->created_at }} <br>
+                        <b>Description:</b> {{ $task->description }} <br>
                         </p>
                       </div>
                     </p>
-                    <div class="card-description">
-                      @forelse ($role->permissions as $permission)
-                          <span class="badge rounded-pill bg-dark text-white">{{ $permission->name }}</span>
-                      @empty
-                          <span class="badge badge-danger bg-danger">Sem permissões</span>
-                      @endforelse
-                    </div>
                   </div>
                   <div class="card-footer">
                     <div class="button-container">

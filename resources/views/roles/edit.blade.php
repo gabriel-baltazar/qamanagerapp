@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'roles', 'titlePage' => 'Editar role'])
+@extends('layouts.main', ['activePage' => 'roles', 'titlePage' => 'Editar função'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -10,14 +10,14 @@
           <div class="card">
             <!--Header-->
             <div class="card-header card-header-info">
-              <h4 class="card-title">Editar role</h4>
-              <p class="card-category">Editar dados da role</p>
+              <h4 class="card-title">Editar função</h4>
+              <p class="card-category">Editar dados da função</p>
             </div>
             <!--End header-->
             <!--Body-->
             <div class="card-body">
               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Nome da role</label>
+                <label for="name" class="col-sm-2 col-form-label">Nome da função</label>
                 <div class="col-sm-7">
                   <input type="text" class="form-control" name="name" value="{{ old('name', $role->name) }}" autocomplete="off" autofocus>
                 </div>

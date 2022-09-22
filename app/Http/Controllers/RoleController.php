@@ -108,7 +108,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        abort_if(Gate::denies('role_delete'), 403);
+        abort_if(Gate::denies('role_destroy'), 403);
 
         $role->delete();
 

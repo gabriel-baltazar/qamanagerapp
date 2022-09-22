@@ -95,7 +95,7 @@ class PermissionController extends Controller
      */
     public function destroy(Permission $permission)
     {
-        abort_if(Gate::denies('permission_delete'), 403);
+        abort_if(Gate::denies('permission_destroy'), 403);
 
         $permission->delete();
 

@@ -49,9 +49,9 @@
         </a>
       </li>
       @endcan
-      @can('post_index')
-      <li class="nav-item{{ $activePage == 'tarefas' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('posts.index') }}">
+      @can('task_index')
+      <li class="nav-item{{ $activePage == 'tasks' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('tasks.index') }}">
           <i class="material-icons">library_books</i>
             <p>{{ __('Tarefas') }}</p>
         </a>
@@ -69,7 +69,7 @@
       <li class="nav-item{{ $activePage == 'roles' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('roles.index') }}">
           <i class="material-icons">layers</i>
-            <p>{{ __('Roles') }}</p>
+            <p>{{ __('Funções') }}</p>
         </a>
       </li>
       @endcan
