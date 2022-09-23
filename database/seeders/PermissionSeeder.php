@@ -41,6 +41,9 @@ class PermissionSeeder extends Seeder
             'task_show',
             'task_edit',
             'task_destroy',
+            'task_get',
+            'task_do',
+
         ];
 
         foreach ($permissions as $permission) {

@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('tasks', App\Http\Controllers\TaskController::class);
     Route::put('/tasks/getTask/{id}', [App\Http\Controllers\TaskController::class, 'getTask'])->name('tasks.getTask');
+    Route::get('/tasks/myTask/{task}', [App\Http\Controllers\TaskController::class, 'myTask'])->name('tasks.myTask');
+    Route::resource('stopwatches', App\Http\Controllers\StopwatchController::class);
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
     Route::resource('roles', App\Http\Controllers\RoleController::class);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Stopwatch;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -66,9 +67,19 @@ class TaskController extends Controller
 
     public function getTask($idTask)
     {
+        abort_if(Gate::denies('task_get'), 403);
         $task = Task::findOrFail($idTask);
         $task->responsible_id = Auth::user()->id;
         $task->save();
         return redirect()->route('home');
+    }
+
+    public function myTask(Task $task)
+    {
+        abort_if(Gate::denies('task_do'), 403);
+
+        $stopwatches = Stopwatch::where('task_id', $task->id)->get();
+
+        return view('tasks.myTask', compact('task', 'stopwatches'));
     }
 }
