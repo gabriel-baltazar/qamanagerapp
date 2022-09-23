@@ -33,7 +33,7 @@
                 <div class="row">
                     <label for="description" class="col-sm-2 col-form-label">Responsavel</label>
                     <div class="col-sm-6">
-                      <select style='color:#AAAAAA;' class="form-control" name="responsible_id">
+                      <select class="form-control" name="responsible_id">
                         <option value="0">Selecionar responsavel</option>
                         @foreach ($users as $user)
                           <option value="{{$user->id}}">{{$user->name}}</option>

@@ -63,4 +63,12 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index');
     }
+
+    public function getTask($idTask)
+    {
+        $task = Task::findOrFail($idTask);
+        $task->responsible_id = Auth::user()->id;
+        $task->save();
+        return redirect()->route('home');
+    }
 }

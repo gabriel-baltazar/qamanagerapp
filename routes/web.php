@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
 
     Route::resource('tasks', App\Http\Controllers\TaskController::class);
-    Route::resource('tasks', App\Http\Controllers\TaskController::class);
+    Route::put('/tasks/getTask/{id}', [App\Http\Controllers\TaskController::class, 'getTask'])->name('tasks.getTask');
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);
     Route::resource('roles', App\Http\Controllers\RoleController::class);
