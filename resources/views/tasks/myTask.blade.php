@@ -51,16 +51,12 @@
                           </tr>
                         </thead>
                         <tbody id="stopwatch-table">
-                          @forelse($stopwatches as $stopwatch)
+                          @foreach($stopwatches as $stopwatch)
                             <tr>
                               <td>{{$stopwatch->session}}</td>
                               <td>{{$stopwatch->time}}</td>
                             </tr>
-                          @empty
-                            <tr>
-                                <td colspan="2">Sem registros.</td>
-                            </tr>
-                          @endforelse
+                          @endforeach
                         </tbody>
                       </table>
                     </div>
