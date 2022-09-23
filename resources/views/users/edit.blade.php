@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'users', 'titlePage' => 'Editar usuario'])
+@extends('layouts.main', ['activePage' => 'users', 'titlePage' => 'Editar usuário'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -10,11 +10,11 @@
           <div class="card">
             <div class="card-header card-header-info">
               <h4 class="card-title">Usuario</h4>
-              <p class="card-category">Editar datos</p>
+              <p class="card-category">Editar dados</p>
             </div>
             <div class="card-body">
               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Nombre</label>
+                <label for="name" class="col-sm-2 col-form-label">Nome</label>
                 <div class="col-sm-7">
                   <input type="text" class="form-control" name="name" value="{{ old('name', $user->name) }}" autofocus>
                   @if ($errors->has('name'))
@@ -23,7 +23,7 @@
                 </div>
               </div>
               <div class="row">
-                <label for="username" class="col-sm-2 col-form-label">Nombre de usuario</label>
+                <label for="username" class="col-sm-2 col-form-label">Nome do usuário</label>
                 <div class="col-sm-7">
                   <input type="text" class="form-control" name="username" value="{{ old('username', $user->username) }}">
                   @if ($errors->has('username'))
@@ -32,7 +32,7 @@
                 </div>
               </div>
               <div class="row">
-                <label for="email" class="col-sm-2 col-form-label">Correo</label>
+                <label for="email" class="col-sm-2 col-form-label">E-mail</label>
                 <div class="col-sm-7">
                   <input type="email" class="form-control" name="email" value="{{ old('email', $user->email) }}">
                   @if ($errors->has('email'))
@@ -41,16 +41,16 @@
                 </div>
               </div>
               <div class="row">
-                <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+                <label for="password" class="col-sm-2 col-form-label">Senha</label>
                 <div class="col-sm-7">
-                  <input type="password" class="form-control" name="password" placeholder="Ingrese la contraseña sólo en caso de modificarla">
+                  <input type="password" class="form-control" name="password" placeholder="Inserir senha apenas se for modificar">
                   @if ($errors->has('password'))
                     <span class="error text-danger" for="input-password">{{ $errors->first('password') }}</span>
                   @endif
                 </div>
               </div>
               <div class="row">
-                <label for="name" class="col-sm-2 col-form-label">Roles</label>
+                <label for="name" class="col-sm-2 col-form-label">Funções</label>
                 <div class="col-sm-7">
                     <div class="form-group">
                         <div class="tab-content">
@@ -87,7 +87,7 @@
             </div>
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Actualizar</button>
+              <button type="submit" class="btn btn-primary">Atualizar</button>
             </div>
             <!--End footer-->
           </div>
