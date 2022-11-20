@@ -30,7 +30,7 @@
                         <p class="description">
                           {{ $user->username }} <br>
                           {{ $user->email }} <br>
-                          {{ $user->created_at }}
+                          {{ $user->created_at->toFormattedDateString() }}
                         </p>
                       </div>
                     </p>

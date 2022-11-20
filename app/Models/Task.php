@@ -11,6 +11,12 @@ class Task extends Model
 
     protected $fillable = ['title','description', 'user_id', 'responsible_id'];
 
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'closed_at'
+    ];
+
     public function user()
     {
         return $this->hasOne(User::class, 'id', 'user_id');
@@ -24,5 +30,14 @@ class Task extends Model
             2 => 'Finalizada'
         ];
         return $status[$this->status];
+    }
+    public function _responsavel()
+    {
+        if($this->responsible_id == 0){
+            return 'Sem responsável';
+        }else{
+            $responsible = User::findOrFail($this->responsible_id)->name;
+            return $responsible;
+        }
     }
 }

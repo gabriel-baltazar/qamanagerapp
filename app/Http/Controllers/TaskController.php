@@ -82,4 +82,18 @@ class TaskController extends Controller
 
         return view('tasks.myTask', compact('task', 'stopwatches'));
     }
+    
+    public function finishTask(Request $request)
+    {
+        abort_if(Gate::denies('task_finish'), 403);
+        $task = Task::findOrFail($request->id);
+        if($request->acao == 'Finalizar'){
+            $task->status = 2;
+        }else{
+            $task->status = 1;
+        }
+        $task->closed_at = now();
+        $task->save();
+        return redirect()->route('home');
+    }
 }

@@ -27,7 +27,7 @@
                         <h5 class="title mt-3">{{ $task->title }}</h5>
                         <p class="description">
                         <b>Status:</b> {{ $task->_status() }} <br>
-                        <b>Criado em:</b> {{ $task->created_at }} <br>
+                        <b>Criado em:</b> {{ $task->created_at->toFormattedDateString() }} <br>
                         <b>Description:</b> {{ $task->description }} <br>
                         </p>
                       </div>

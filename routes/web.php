@@ -24,6 +24,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
     Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [App\Http\Controllers\UserController::class, 'show'])->name('users.show');
+    Route::get('/users/perfil/{user}', [App\Http\Controllers\UserController::class, 'profile'])->name('users.pefil');
     Route::get('/users/{user}/edit', [App\Http\Controllers\UserController::class, 'edit'])->name('users.edit');
     Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
@@ -31,6 +32,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::resource('tasks', App\Http\Controllers\TaskController::class);
     Route::put('/tasks/getTask/{id}', [App\Http\Controllers\TaskController::class, 'getTask'])->name('tasks.getTask');
     Route::get('/tasks/myTask/{task}', [App\Http\Controllers\TaskController::class, 'myTask'])->name('tasks.myTask');
+    Route::post('/tasks/finalizar', [App\Http\Controllers\TaskController::class, 'finishTask'])->name('tasks.finish');
     Route::resource('stopwatches', App\Http\Controllers\StopwatchController::class);
 
     Route::resource('permissions', App\Http\Controllers\PermissionController::class);

@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'permissions', 'titlePage' => 'Detalles del permiso'])
+@extends('layouts.main', ['activePage' => '','titlePage' => 'Pefil do usuário'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -6,38 +6,43 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-info">
-            <div class="card-title">Permisos</div>
-            <p class="card-category">Vista detallada del permiso {{ $permission->name }}</p>
+            <div class="card-title">Perfil</div>
+            <p class="card-category">Detalhes do usuário {{ $user->name }}</p>
           </div>
           <!--body-->
           <div class="card-body">
+            @if (session('success'))
+            <div class="alert alert-success" role="success">
+              {{ session('success') }}
+            </div>
+            @endif
             <div class="row">
               <div class="col-md-4">
-                <div class="card card-user">
+                <div class="">
                   <div class="card-body">
                     <p class="card-text">
                       <div class="author">
-                        <a href="#">
+                        <div class="d-flex">
                           <img src="{{ asset('/img/default-avatar.png') }}" alt="image" class="avatar">
-                          <h5 class="title mt-3">{{ $permission->name }}</h5>
-                        </a>
+                          <h5 class="title mx-3">{{ $user->name }}</h5>
+                        </div>
                         <p class="description">
-                        {{ $permission->guard_name }} <br>
-                        {{ $permission->created_at->toFormattedDateString() }}
+                          {{ $user->username }} <br>
+                          {{ $user->email }} <br>
+                          {{ $user->created_at->toFormattedDateString() }}
                         </p>
                       </div>
                     </p>
                     <div class="card-description">
-                       Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam officia corporis molestiae aliquid provident placeat.
                     </div>
                   </div>
                   <div class="card-footer">
                     <div class="button-container">
-                      <button class="btn btn-sm btn-primary">Editar</button>
+                      <a href="{{route('users.edit', $user->id)}}" class="btn btn-sm btn-primary">Editar</a>
                     </div>
                   </div>
                 </div>
-              </div><!--end card user-->
+              </div>
             </div>
           </div>
         </div>

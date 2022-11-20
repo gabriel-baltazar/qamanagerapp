@@ -19,12 +19,13 @@
               </div>
             </div>
             <div class="table-responsive">
-              <table class="table ">
+              <table id="table_task" class="table ">
                 <thead class="text-dark">
                   <th> ID </th>
                   <th> Titulo </th>
                   <th> Descrição </th>
                   <th> Status </th>
+                  <th> Responsável </th>
                   <th> Criado por </th>
                   <th> Criado em </th>
                   <th> Fechado em </th>
@@ -38,6 +39,7 @@
                     <td>{{ $task->description }}</td>
                     <td>{{ $task->_status() }}</td>
                     <td>{{ $task->user->name }}</td>
+                    <td>{{ $task->_responsavel() }}</td>
                     <td class="text-dark">{{ $task->created_at->toFormattedDateString() }}</td>
                     <td class="text-dark">@if($task->closed_at){{ $task->closed_at->toFormattedDateString() }}@endif</td>
                     <td class="td-actions text-right">
@@ -82,3 +84,16 @@
   </div>
 </div>
 @endsection
+
+@push('js')
+  <script>
+    $(document).ready(function() {
+        $('#table_task').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        } );
+    } );
+  </script>
+@endpush
