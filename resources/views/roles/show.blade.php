@@ -30,7 +30,7 @@
                         </a>
                         <p class="description">
                           {{ $role->guard_name }} <br>
-                          {{ $role->created_at }}
+                          {{ $role->created_at->toFormattedDateString() }}
                         </p>
                       </div>
                     </p>

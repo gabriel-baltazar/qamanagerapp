@@ -35,7 +35,7 @@
                           <td>{{ $permission->id }}</td>
                           <td>{{ $permission->name }}</td>
                           <td>{{ $permission->guard_name }}</td>
-                          <td>{{ $permission->created_at }}</td>
+                          <td>{{ $permission->created_at->toFormattedDateString() }}</td>
                           <td class="td-actions text-right">
                             @can('permission_show')
                             <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-info"><i
@@ -47,7 +47,7 @@
                             @endcan
                             @can('permission_destroy')
                             <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST"
-                              style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                              style="display: inline-block;" onsubmit="return confirm('Deseja realmente excluir?')">
                               @csrf
                               @method('DELETE')
                               <button class="btn btn-danger" type="submit" rel="tooltip">

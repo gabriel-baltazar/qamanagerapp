@@ -44,6 +44,13 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
+    public function profile(User $user)
+    {
+        abort_if(Gate::denies('user_profile'), 403);
+        $user->load('roles');
+        return view('users.perfil', compact('user'));
+    }
+
     public function edit(User $user)
     {
         abort_if(Gate::denies('user_edit'), 403);

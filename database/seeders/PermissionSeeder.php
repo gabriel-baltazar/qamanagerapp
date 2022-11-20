@@ -35,6 +35,7 @@ class PermissionSeeder extends Seeder
             'user_show',
             'user_edit',
             'user_destroy',
+            'user_profile',
 
             'task_index',
             'task_create',
@@ -43,6 +44,8 @@ class PermissionSeeder extends Seeder
             'task_destroy',
             'task_get',
             'task_do',
+            'task_finish',
+            'task_stopwatch'
 
         ];
 

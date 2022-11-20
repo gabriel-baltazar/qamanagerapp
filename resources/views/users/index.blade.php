@@ -58,7 +58,7 @@
                                 <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning"><i class="material-icons">edit</i></a>
                                 @endcan
                                 @can('user_destroy')
-                                <form action="{{ route('users.delete', $user->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Seguro?')">
+                                <form action="{{ route('users.delete', $user->id) }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Deseja realmente excluir?')">
                                 @csrf
                                 @method('DELETE')
                                     <button class="btn btn-danger" type="submit" rel="tooltip">

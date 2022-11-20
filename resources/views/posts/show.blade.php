@@ -31,7 +31,7 @@
                         <p class="description">
                           {{ _('Ceo/Co-Founder') }} <br>
                           {{ $post->title }} <br>
-                          {{ $post->created_at }}
+                          {{ $post->created_at->toFormattedDateString() }}
                         </p>
                       </div>
                     </p>

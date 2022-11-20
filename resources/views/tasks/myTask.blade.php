@@ -27,19 +27,37 @@
                       <h5 class="title mt-3">{{ $task->title }}</h5>
                       <p class="description">
                         <b>Status:</b> {{ $task->_status() }} <br>
-                        <b>Criado em:</b> {{ $task->created_at }} <br>
+                        <b>Criado em:</b> {{ $task->created_at->toFormattedDateString() }} <br>
                         <b>Description:</b> {{ $task->description }} <br>
                       </p>
                     </div>
                     </p>
+                    <br>
                   </div>
-                  <div class="card-footer">
-                    <br><br><br>
-                  </div>
+                  @if($task->status == 0)
+                    @can('task_finish')
+                    <div class="card-footer">
+                      <div class="block mx-auto">
+                        <div class="d-flex">
+                          <form method="POST" onsubmit="return confirm('Deseja realmente finalizar a tarefa?')" action="{{ route('tasks.finish', ['id' => $task->id, 'acao' => 'Finalizar']) }}">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="btn btn-success btn-sm">Finalizar</button>
+                          </form>
+                          <form method="POST" onsubmit="return confirm('Deseja realmente cancelar a tarefa?')" action="{{ route('tasks.finish', ['id' => $task->id, 'acao' => 'Cancelar']) }}">
+                            @csrf
+                            @method('POST')
+                            <button type="submit" class="btn btn-danger btn-sm">Cancelar</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    @endcan
+                  @endif
                 </div>
               </div>
               <div class="col-md-4">
-              <div class="card card-user">
+                <div class="card card-user">
                   <div class="card-body">
                     <p class="card-text">
                     <div class="author" style="height: 200px;overflow: scroll;">
@@ -52,26 +70,30 @@
                         </thead>
                         <tbody id="stopwatch-table">
                           @foreach($stopwatches as $stopwatch)
-                            <tr>
-                              <td>{{$stopwatch->session}}</td>
-                              <td>{{$stopwatch->time}}</td>
-                            </tr>
+                          <tr>
+                            <td>{{$stopwatch->session}}</td>
+                            <td>{{$stopwatch->time}}</td>
+                          </tr>
                           @endforeach
                         </tbody>
                       </table>
                     </div>
                     </p>
                   </div>
-                  <div class="card-footer">
-                    <div class="block mx-auto" id="chrono">
-                      <div class="text-center values stopwatch-time">00:00:00</div>
-                      <div>
-                        <button class="btn btn-success btn-sm startButton">Start</button>
-                        <button class="btn btn-warning btn-sm pauseButton">Pause</button>
-                        <button class="btn btn-info btn-sm stopButton" onclick="saveStopwatch()">Salvar</button>
+                  @if($task->status == 0)
+                    @can('task_stopwatch')
+                    <div class="card-footer">
+                      <div class="block mx-auto" id="chrono">
+                        <div class="text-center values stopwatch-time">00:00:00</div>
+                        <div>
+                          <button class="btn btn-success btn-sm startButton">Start</button>
+                          <button class="btn btn-warning btn-sm pauseButton">Pause</button>
+                          <button class="btn btn-info btn-sm stopButton" onclick="saveStopwatch()">Salvar</button>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                    @endcan
+                  @endif
                 </div>
               </div>
               <!--end first-->
@@ -90,43 +112,43 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/easytimer@1.1.1/src/easytimer.min.js"></script>
 <script>
-var timer = new Timer();
-$('#chrono .startButton').click(function () {
+  var timer = new Timer();
+  $('#chrono .startButton').click(function() {
     timer.start();
-});
-
-$('#chrono .pauseButton').click(function () {
-    timer.pause();
-});
-
-
-timer.addEventListener('secondsUpdated', function (e) {
-    $('#chrono .values').html(timer.getTimeValues().toString());
-});
-
-timer.addEventListener('started', function (e) {
-    $('#chrono .values').html(timer.getTimeValues().toString());
-});
-
-function saveStopwatch(){
-  var stopwatchTime = $('.stopwatch-time').html()
-  var _token = $('meta[name="csrf-token"]').attr('content');
-  $.ajax({
-    url: "{{ route('stopwatches.store') }}",
-    type:"POST",
-    data:{
-      _token:_token,
-      task_id: {{ $task->id }},
-      time: stopwatchTime
-    },
-    success:function(response){
-      if(response) {
-        $('.stopwatch-time').html('00:00:00')
-        timer.stop()
-        $('#stopwatch-table').append('<tr><td>'+response.session+'</td><td>'+response.time+'</td></tr>')
-      }
-    },
   });
-}
+
+  $('#chrono .pauseButton').click(function() {
+    timer.pause();
+  });
+
+
+  timer.addEventListener('secondsUpdated', function(e) {
+    $('#chrono .values').html(timer.getTimeValues().toString());
+  });
+
+  timer.addEventListener('started', function(e) {
+    $('#chrono .values').html(timer.getTimeValues().toString());
+  });
+
+  function saveStopwatch(){
+    var stopwatchTime = $('.stopwatch-time').html()
+    var _token = $('meta[name="csrf-token"]').attr('content');
+    $.ajax({
+      url: "{{ route('stopwatches.store') }}",
+      type:"POST",
+      data:{
+        _token:_token,
+        task_id: {{ $task->id }},
+        time: stopwatchTime
+      },
+      success:function(response){
+        if(response) {
+          $('.stopwatch-time').html('00:00:00')
+          timer.stop()
+          $('#stopwatch-table').append('<tr><td>'+response.session+'</td><td>'+response.time+'</td></tr>')
+        }
+      },
+    });
+  }
 </script>
 @endpush
