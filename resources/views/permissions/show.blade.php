@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'permissions', 'titlePage' => 'Detalles del permiso'])
+@extends('layouts.main', ['activePage' => 'permissions', 'titlePage' => 'Detalhes da permissão'])
 @section('content')
 <div class="content">
   <div class="container-fluid">
@@ -6,7 +6,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-info">
-            <div class="card-title">Permisos</div>
+            <div class="card-title">Permissões</div>
             <p class="card-category">Vista detallada del permiso {{ $permission->name }}</p>
           </div>
           <!--body-->
