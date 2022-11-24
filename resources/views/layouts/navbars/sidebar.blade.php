@@ -49,6 +49,14 @@
         </a>
       </li>
       @endcan
+      @can('relatorio_index')
+      <li class="nav-item{{ $activePage == 'relatorio' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('relatorios.index') }}">
+          <i class="material-icons">insert_drive_file</i>
+            <p>{{ __('Relatorio') }}</p>
+        </a>
+      </li>
+      @endcan
     </ul>
   </div>
 </div>
