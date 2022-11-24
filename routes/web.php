@@ -29,6 +29,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('/users/{user}', [App\Http\Controllers\UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.delete');
 
+    Route::post('/tasks/export/', [App\Http\Controllers\RelatorioController::class, 'export'])->name('relatorios.export');
+    Route::get('/tasks/relatorio/', [App\Http\Controllers\RelatorioController::class, 'relatorio'])->name('relatorios.index');
     Route::resource('tasks', App\Http\Controllers\TaskController::class);
     Route::put('/tasks/getTask/{id}', [App\Http\Controllers\TaskController::class, 'getTask'])->name('tasks.getTask');
     Route::get('/tasks/myTask/{task}', [App\Http\Controllers\TaskController::class, 'myTask'])->name('tasks.myTask');

@@ -11,7 +11,7 @@
             <!--Header-->
             <div class="card-header card-header-info">
               <h4 class="card-title">Editar tarefa</h4>
-              <p class="card-category">Editar datos del post</p>
+              <p class="card-category">Editar dados da tarefa</p>
             </div>
             <!--End header-->
             <!--Body-->
@@ -32,7 +32,7 @@
             <!--End body-->
             <!--Footer-->
             <div class="card-footer ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary">Salvar</button>
+              <button type="submit" class="btn btn-primary">Atualizar</button>
             </div>
           </div>
           <!--End footer-->

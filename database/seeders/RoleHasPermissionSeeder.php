@@ -23,10 +23,11 @@ class RoleHasPermissionSeeder extends Seeder
 
         // User
         $user_permissions = $admin_permissions->filter(function($permission) {
-            return substr($permission->name, 0, 6) != 'user_' &&
-                substr($permission->name, 0, 5) != 'role_' &&
-                substr($permission->name, 0, 5) != 'permission_' &&
-                substr($permission->name, 0, 9) != 'task_';
+            return substr($permission->name, 0, 5) != 'user_' &&
+                    substr($permission->name, 0, 5) != 'role_' &&
+                    substr($permission->name, 0, 11) != 'permission_' &&
+                    substr($permission->name, 0, 5) != 'task_' &&
+                    substr($permission->name, 0, 10) != 'relatorio_';
         });
         Role::findOrFail(2)->permissions()->sync($user_permissions);
     }
