@@ -42,8 +42,6 @@
                     </div>
                 </div>
               </div>
-            </div>
-
             <!--End body-->
 
             <!--Footer-->
@@ -51,6 +49,7 @@
               <button type="submit" class="btn btn-primary">Salvar</button>
             </div>
             <!--End footer-->
+            </div>
           </div>
         </form>
       </div>

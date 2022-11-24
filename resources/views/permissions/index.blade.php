@@ -1,4 +1,4 @@
-@extends('layouts.main', ['activePage' => 'permissions', 'titlePage' => 'Permisos'])
+@extends('layouts.main', ['activePage' => 'permissions', 'titlePage' => 'Permissões'])
 
 @section('content')
   <div class="content">

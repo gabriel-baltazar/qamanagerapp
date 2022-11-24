@@ -45,7 +45,9 @@ class PermissionSeeder extends Seeder
             'task_get',
             'task_do',
             'task_finish',
-            'task_stopwatch'
+            'task_stopwatch',
+
+            'relatorio_index'
 
         ];
 

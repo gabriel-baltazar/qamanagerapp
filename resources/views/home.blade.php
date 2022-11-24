@@ -27,7 +27,7 @@
                                     <td class="td-actions text-right">
                                     <form action="{{ route('tasks.getTask', $task->id) }}" method="post" class="form-horizontal">
                                         @csrf
-                                        @method('PUT')
+                                            @method('PUT')
                                         <button type="submit" rel="tooltip" class="btn btn-info">
                                             <i class="material-icons">forward</i>
                                         </button>
