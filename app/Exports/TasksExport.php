@@ -3,12 +3,11 @@
 namespace App\Exports;
 
 use App\Models\Task;
-use GuzzleHttp\Psr7\Request;
-use Maatwebsite\Excel\Concerns\FromQuery;
+use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\Exportable;
-use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class TasksExport implements FromQuery,WithHeadings
+class TasksExport implements FromView
 {
     use Exportable;
 
@@ -18,48 +17,42 @@ class TasksExport implements FromQuery,WithHeadings
         $this->date_fim = $date_fim;
         $this->user = $user;
     }
-
-    public function headings(): array
+    public function view(): View
     {
-        return [
-            '#',
-            'Título',
-            'Descrição',
-            'Criado em',
-            'Atualizado em',
-            'Finalizado em',
-            'Responsável'
-        ];
-    }
-    public function query()
-    {
-        if($this->user == '0'){
-            return Task::query()->whereBetween('tasks.created_at', [$this->date_ini, $this->date_fim])
-                                ->join('users', function($join){
-                                    $join->on('tasks.responsible_id', '=', 'users.id');
-                                })
-                                ->select('tasks.id',
-                                        'tasks.title',
-                                        'tasks.description',
-                                        'tasks.created_at',
-                                        'tasks.updated_at',
-                                        'tasks.closed_at',
-                                        'users.name as responsible_name'
-                                    );
-        }
-        return Task::query()->where('tasks.user_id', $this->user)
-                            ->whereBetween('tasks.created_at', [$this->date_ini, $this->date_fim])
+        if($this->user != '0'){
+            $tasks = Task::where('tasks.responsible_id', $this->user)
+                ->whereBetween('tasks.created_at', [$this->date_ini, $this->date_fim])
                             ->join('users', function($join){
-                                $join->on('tasks.responsible_id', '=', 'users.id');
+                                $join->on('tasks.responsible_id', '=', 'users.id');   
                             })
-                            ->select(
-                                    'tasks.id',
+                            ->select('tasks.id',
                                     'tasks.title',
+                                    'tasks.status',
                                     'tasks.description',
                                     'tasks.created_at',
                                     'tasks.updated_at',
                                     'tasks.closed_at',
-                                    'users.name as responsible_name',
-                                );
+                                    'users.name as responsible_name'
+                                )
+                            ->get();
+        }else{
+            $tasks = Task::whereBetween('tasks.created_at', [$this->date_ini, $this->date_fim])
+            ->join('users', function($join){
+                $join->on('tasks.responsible_id', '=', 'users.id');
+            })
+            ->select(
+                    'tasks.id',
+                    'tasks.title',
+                    'tasks.status',
+                    'tasks.description',
+                    'tasks.created_at',
+                    'tasks.updated_at',
+                    'tasks.closed_at',
+                    'users.name as responsible_name',
+                )->get();                                                   
+        }
+        return view('pdf.invoice', [
+            'tasks' => $tasks
+        ]);
     }
 }

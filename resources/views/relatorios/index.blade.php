@@ -18,7 +18,7 @@
               <div class="col-md-4">
                 <div>
                   <h4>Tarefas</h4>
-                  <form method="POST" action="{{route('relatorios.export')}}">
+                  <form method="POST" action="{{route('relatorios.export')}}" target="_blank">
                     @csrf
                     @method('POST')
                     <input name="tipo" type="text" value="tarefa" hidden>
@@ -28,7 +28,7 @@
                         <select class="form-control" name="formato" id="formato">
                           <option value="0">Selecione o formato</option>
                           <option value="pdf">PDF</option>
-                          <option value="Excel">Excel</option>
+                          <option value="excel">Excel</option>
                         </select>
                     </div>
                     <div>
@@ -40,8 +40,8 @@
                       <input type="date" class="form-control" name="date_fim">
                     </div>
                     <div>
-                      <label class="form-label" for="user">Filtrar por usuário</label>
-                      <select class="form-control" name="user" id="user">
+                      <label class="form-label" for="user_id">Filtrar por usuário</label>
+                      <select class="form-control" name="user_id" id="user_id">
                         <option value="0">Selecione</option>
                         @foreach($users as $user)
                         <option value="{{$user->id}}">{{$user->name}}</option>
@@ -55,7 +55,7 @@
               <div class="col-md-4">
                 <div>
                   <h4>Cronometros</h4>
-                  <form method="POST" action="{{route('relatorios.export')}}">
+                  <form method="POST" action="{{route('relatorios.export')}}" target="_blank">
                     @csrf
                     @method('POST')
                     <input name="tipo" type="text" value="cronometro" hidden>
@@ -64,7 +64,7 @@
                         <select class="form-control" name="formato" id="formato">
                           <option value="0">Selecione o formato</option>
                           <option value="pdf">PDF</option>
-                          <option value="Excel">Excel</option>
+                          <option value="excel">Excel</option>
                         </select>
                     </div>
                     <div>
